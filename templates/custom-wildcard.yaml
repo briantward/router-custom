@@ -1,0 +1,13 @@
+apiVersion: ingress.operator.openshift.io/v1
+kind: DNSRecord
+metadata:
+  labels:
+    ingresscontroller.operator.openshift.io/owning-ingresscontroller: default
+  name: custom-wildcard
+  namespace: openshift-ingress-operator
+spec:
+  dnsName: {{ .Values.dnsCustomWildcard }}
+  recordTTL: 30
+  recordType: CNAME
+  targets:
+  - {{ .Values.generatedElbName }}

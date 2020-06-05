@@ -1,0 +1,17 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: httpd-example
+  name: httpd-example-xf
+  namespace: bward-test
+spec:
+i  host: httpd-example-bward-test.apps-xf.cluster-example.com
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: httpd-example
+    weight: 100
+  wildcardPolicy: None

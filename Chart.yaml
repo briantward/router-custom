@@ -1,0 +1,13 @@
+apiVersion: v2
+name: router-custom
+version: 0.0.1
+kubeVersion: >= 1.16.0
+description: A custom OpenShift router from OCP 4.3 with backported RFE for handling X-Forwarded-* headers programmatically.  This is NOT SUPPORTED.
+type:
+keywords:
+  - router
+  - forwarded
+  - x-forwarded-for
+maintainer:
+  - name: Brian Ward
+    email: bward@redhat.com

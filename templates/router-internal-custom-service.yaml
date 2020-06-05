@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    ingresscontroller.operator.openshift.io/owning-ingresscontroller: none
+  name: router-internal-custom
+  namespace: openshift-ingress
+spec:
+  ports:
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: https
+  - name: metrics
+    port: 1936
+    protocol: TCP
+    targetPort: 1936
+  selector:
+    ingresscontroller.operator.openshift.io/deployment-ingresscontroller: none
+  sessionAffinity: None
+  type: ClusterIP

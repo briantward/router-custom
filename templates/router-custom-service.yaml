@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-internal: 0.0.0.0/0
+    service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: '*'
+  labels:
+    app: router-custom
+    ingresscontroller.operator.openshift.io/owning-ingresscontroller: none
+    router: router-custom
+  name: router-custom
+  namespace: openshift-ingress
+spec:
+  externalTrafficPolicy: Local
+  ports:
+  - name: https
+    port: 443
+    protocol: TCP
+    targetPort: https
+  selector:
+    ingresscontroller.operator.openshift.io/deployment-ingresscontroller: none
+  sessionAffinity: None
+  type: LoadBalancer
